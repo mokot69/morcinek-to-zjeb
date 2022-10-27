@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="skrypt.js" type="text/javascript"></script>
+    <title>Document</title>
+</head>
+<body onload="czas()">
+    <img src="cyfry/0.jpg" class="rotated">
+    <img src="cyfry/0.jpg" class="rotated">
+    <img src="cyfry/d.jpg" class="rotated">
+    <img src="cyfry/0.jpg" class="rotated">
+    <img src="cyfry/0.jpg" class="rotated">
+    <img src="cyfry/d.jpg" class="rotated">
+    <img src="cyfry/0.jpg" class="rotated">
+    <img src="cyfry/0.jpg" class="rotated">
+    <img src="cyfry/d.jpg" class="rotated">
+    <img src="cyfry/0.jpg" class="rotated">
+    <img src="cyfry/0.jpg" class="rotated">
+</body>
+</html>
+
+function czas(){
+    c = new Date();
+
+    g = c.getHours();
+    gj = g%10;
+    gd = (g-gj)/10;
+
+    m = c.getMinutes();
+    mj = m%10;
+    md = (m-mj)/10;
+    
+    s = c.getSeconds();
+    sj = s%10;
+    sd = (s-sj)/10;
+
+    ss = (c.getMilliseconds() - c.getMilliseconds()%10)/10;
+    ssj = ss%10;
+    ssd = (ss-ssj)/10;
+
+    document.images[0].src='cyfry/'+gd+'.jpg';
+    document.images[1].src='cyfry/'+gj+'.jpg';
+    document.images[3].src='cyfry/'+md+'.jpg';
+    document.images[4].src='cyfry/'+mj+'.jpg';
+    document.images[6].src='cyfry/'+sd+'.jpg';
+    document.images[7].src='cyfry/'+sj+'.jpg';
+    document.images[9].src='cyfry/'+ssd+'.jpg';
+    document.images[10].src='cyfry/'+ssj+'.jpg';
+
+    document.images[6].style.transform='rotate('+(60*sd)+'deg)';
+    document.images[7].style.transform='rotate('+(-36*sj)+'deg)';
+    document.images[9].style.transform='rotate('+(36*ssd)+'deg)';
+    document.images[10].style.transform='rotate('+(-36*ssj)+'deg)';
+    document.images[1].style.transform='rotate('+(36*gj)+'deg)';
+    document.images[3].style.transform='rotate('+(60*md)+'deg)';
+    document.images[4].style.transform='rotate('+(-36*mj)+'deg)';
+}
+setInterval('czas()',10);
+
+img{
+    height: 100px;
+}
+.rotated{
+    transform: rotate(1deg);
+}
